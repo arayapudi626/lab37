@@ -34,7 +34,6 @@ void search(const map<int, list<string>> &hash_table){
     cout << "Enter key to search for: ";
     cin >> key;
     int hashidx = gen_hash_index(key);
-    cout << "key: " << key << " is at " << hashidx << endl;
     auto it = hash_table.find(hashidx);
     for (const string &s : it->second) {
         if (s==key){
