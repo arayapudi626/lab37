@@ -29,6 +29,22 @@ int count = 0;
     }
 }
 
+void search(const map<int, list<string>> &hash_table){
+   string key;
+    cout << "Enter key to search for: ";
+    cin >> key;
+    int hashidx = gen_hash_index(key);
+    cout << "key: " << key << " is at " << hashidx << endl;
+    auto it = hash_table.find(hashidx);
+    for (const string &s : it->second) {
+        if (s==key){
+            cout << "key found at hash index" << hashidx << endl;
+            return;
+        }
+    }
+    cout << "key not found" << endl;
+}
+
 int main() {
 ifstream fin("lab-37-data-2.txt");
 if (!fin.is_open()) {
@@ -58,6 +74,9 @@ do {
     switch (choice) {
         case 1:
         print100(hash_table);
+        break;
+        case 2:
+        search(hash_table);
         break;
     }
 }while (choice !=6);
