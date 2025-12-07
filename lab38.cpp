@@ -3,14 +3,30 @@
 #include <fstream>
 #include <map>
 #include <list>
-const int SIZE = 97;
+
 using namespace std;
+const int SIZE = 97;
+
 int gen_hash_index(const std::string &s){
     int sum = 0;
     for (char c : s){
         sum+=(int)c;
     }
     return sum % SIZE;
+}
+
+void print100(const map<int, list<string>> &hash_table){
+cout << "First 100 entries: " << endl;
+int count = 0;
+
+    for (const auto val: hash_table){
+        for (const string &s : val.second) {
+        if (count >= 100) break;
+        cout << "hash index " << ": " << s << endl;
+        count++;
+        }
+        if (count >= 10) break;
+    }
 }
 
 int main() {
@@ -35,17 +51,16 @@ while (fin >> text){
 }
 fin.close();
 
-cout << "First 100 entries: " << endl;
-int count = 0;
-
-    for (const auto val: hash_table){
-        for (const string &s : val.second) {
-        if (count >= 100) break;
-        cout << "hash index " << ": " << s << endl;
-        count++;
-        }
-        if (count >= 10) break;
+int choice = 0;
+do {
+    cout << "enter choice: ";
+    cin >> choice;
+    switch (choice) {
+        case 1:
+        print100(hash_table);
+        break;
     }
+}while (choice !=6);
     
 
 return 0;
