@@ -37,11 +37,22 @@ void search(const map<int, list<string>> &hash_table){
     auto it = hash_table.find(hashidx);
     for (const string &s : it->second) {
         if (s==key){
-            cout << "key found at hash index" << hashidx << endl;
+            cout << "key found at hash index " << hashidx << endl;
             return;
         }
     }
     cout << "key not found" << endl;
+}
+
+void addKey(map<int, list<string>> &hash_table){
+    string key;
+    cout << "Enter a key to add: ";
+    cin >> key;
+
+    int hashidx = gen_hash_index(key);
+    hash_table[hashidx].push_back(key);
+
+    cout << "key " << key << " added at " << hashidx << endl;
 }
 
 int main() {
@@ -76,6 +87,9 @@ do {
         break;
         case 2:
         search(hash_table);
+        break;
+        case 3:
+        addKey(hash_table);
         break;
     }
 }while (choice !=6);
