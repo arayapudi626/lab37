@@ -119,6 +119,13 @@ fin.close();
 
 int choice = 0;
 do {
+    cout << "======Hash Table Menu=======" << endl;
+    cout << "1. Print first 100 entries" << endl;
+    cout << "2. Search for key" << endl;
+    cout << "3. Add key" << endl;
+    cout << "4. Remove key" << endl;
+    cout << "5. Modify key" << endl;
+    cout << "6. Exit" << endl;
     cout << "enter choice: ";
     cin >> choice;
     switch (choice) {
@@ -135,7 +142,7 @@ do {
         removeKey(hash_table);
         break;
         case 5:
-        modiyKey(hash_table);
+        modifyKey(hash_table);
         break;
     }
 }while (choice !=6);
