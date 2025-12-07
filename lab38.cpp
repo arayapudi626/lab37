@@ -135,7 +135,7 @@ do {
         removeKey(hash_table);
         break;
         case 5:
-        modifyKey(hash_table);
+        modiyKey(hash_table);
         break;
     }
 }while (choice !=6);
