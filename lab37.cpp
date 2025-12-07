@@ -14,7 +14,6 @@ int gen_hash_index(const std::string &s){
 }
 
 int main() {
-    cout << "test" << endl;
 ifstream fin("lab-37-data-2.txt");
 if (!fin.is_open()) {
     cerr << "could not open file\n";
@@ -38,12 +37,11 @@ fin.close();
 
 cout << "First 100 entries: " << endl;
 int count = 0;
-cout << "done building" << endl;
 
     for (const auto val: hash_table){
         for (const string &s : val.second) {
-        if (count >= 10) break;
-        cout << "hash index " << val.first << ": " << s << endl;
+        if (count >= 100) break;
+        cout << "hash index " << ": " << s << endl;
         count++;
         }
         if (count >= 10) break;
