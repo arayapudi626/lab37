@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 int sum_ascii(const std::string &s){
     int sum = 0;
@@ -10,7 +11,14 @@ int sum_ascii(const std::string &s){
 }
 
 int main() {
-char a = 'A';
+ifstream fin("lab-37-data-2.txt");
+string text;
+long total = 0;
+while (fin >> text){
+    total += sum_ascii(text);
+}
+cout << "Total ASCII sum = " << total << endl;
+/*char a = 'A';
 cout << a << endl;
 cout << (int) a << endl;
 int b = 66;
@@ -18,7 +26,7 @@ cout << b << endl;
 cout << (char) b << endl;
 
 string test = "hello";
-cout << "sum test" << test << sum_ascii(test) << endl;
+cout << "sum test" << test << sum_ascii(test) << endl;*/
 return 0;
 }
 /*
