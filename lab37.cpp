@@ -38,14 +38,15 @@ fin.close();
 
 cout << "First 100 entries: " << endl;
 int count = 0;
+cout << "done building" << endl;
 
     for (const auto val: hash_table){
-        if (count >= 10) break;
-        cout << "hash index " << val.first << ": ";
         for (const string &s : val.second) {
-            cout << s << " " << endl;
-        }
+        if (count >= 10) break;
+        cout << "hash index " << val.first << ": " << s << endl;
         count++;
+        }
+        if (count >= 10) break;
     }
     
 
