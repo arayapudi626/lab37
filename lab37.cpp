@@ -1,8 +1,11 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <map>
+#include <list>
+
 using namespace std;
-int sum_ascii(const std::string &s){
+int gen_hash_index(const std::string &s){
     int sum = 0;
     for (char c : s){
         sum+=(int)c;
@@ -15,9 +18,28 @@ ifstream fin("lab-37-data-2.txt");
 string text;
 long total = 0;
 while (fin >> text){
-    total += sum_ascii(text);
+    total += gen_hash_index(text);
 }
 cout << "Total ASCII sum = " << total << endl;
+
+
+map<int, list<string>> hash_table;
+while (fin >> text){
+    int hash_index = gen_hash_index(text);
+    hash_table[hash_index].push_back(text);
+}
+fin.close();
+
+cout << "First 100 entries: " << endl;
+int count = 0;
+while (count <= 100){
+    for (auto val: hash_table){
+        cout << "hash index " << val.first << ": ";
+        
+    }
+}
+
+
 /*char a = 'A';
 cout << a << endl;
 cout << (int) a << endl;
