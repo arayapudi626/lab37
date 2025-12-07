@@ -55,6 +55,46 @@ void addKey(map<int, list<string>> &hash_table){
     cout << "key " << key << " added at " << hashidx << endl;
 }
 
+void removeKey(map<int, list<string>> &hash_table){
+    string key;
+    cout << "Enter a key to remove: ";
+    cin >> key;
+
+    int hashidx = gen_hash_index(key);
+    auto it = hash_table.find(hashidx);
+
+    for (const string &s : it->second) {
+        if (s==key){
+            hash_table.erase(it);
+            cout << "key " << key << " removed at hash index " << hashidx << endl;
+            return;
+        }
+    }
+   
+}
+
+void modifyKey(map<int, list<string>> &hash_table){
+    string old_key;
+    cout << "Enter a key to remove: ";
+    cin >> old_key;
+
+    int old_hashidx = gen_hash_index(old_key);
+    auto it = hash_table.find(old_hashidx);
+    for (const string &s : it->second) {
+        if (s==old_key){
+            hash_table.erase(it);
+            break;
+        }
+    }
+    string new_key;
+    cout << "Enter a new key: ";
+    cin >> new_key;
+    int new_hashidx = gen_hash_index(new_key);
+    auto it2 = hash_table.find(new_hashidx);
+     hash_table[new_hashidx].push_back(new_key);
+     cout << "Key " << old_key << " changed to " << new_key << " at " << new_hashidx << endl;
+}
+
 int main() {
 ifstream fin("lab-37-data-2.txt");
 if (!fin.is_open()) {
@@ -90,6 +130,12 @@ do {
         break;
         case 3:
         addKey(hash_table);
+        break;
+        case 4:
+        removeKey(hash_table);
+        break;
+        case 5:
+        modifyKey(hash_table);
         break;
     }
 }while (choice !=6);
